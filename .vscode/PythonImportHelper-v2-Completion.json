@@ -1,0 +1,54 @@
+[
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "Prompt",
+        "kind": 6,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "class Prompt(BaseModel):\n    prompt: str\n@app.post(\"/ask\")\ndef ask_mistral(data: Prompt):\n    response = requests.post(\n        \"http://localhost:11434/api/generate\",\n        json={\"model\": \"mistral\", \"prompt\": data.prompt}\n    )\n    return {\"response\": response.json()[\"response\"]}",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "ask_mistral",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def ask_mistral(data: Prompt):\n    response = requests.post(\n        \"http://localhost:11434/api/generate\",\n        json={\"model\": \"mistral\", \"prompt\": data.prompt}\n    )\n    return {\"response\": response.json()[\"response\"]}",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "app = FastAPI()\nclass Prompt(BaseModel):\n    prompt: str\n@app.post(\"/ask\")\ndef ask_mistral(data: Prompt):\n    response = requests.post(\n        \"http://localhost:11434/api/generate\",\n        json={\"model\": \"mistral\", \"prompt\": data.prompt}\n    )\n    return {\"response\": response.json()[\"response\"]}",
+        "detail": "main",
+        "documentation": {}
+    }
+]
