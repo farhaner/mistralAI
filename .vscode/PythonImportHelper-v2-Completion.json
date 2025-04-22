@@ -1,5 +1,55 @@
 [
     {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.ext.declarative",
+        "description": "sqlalchemy.ext.declarative",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.ext.declarative",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
         "label": "FastAPI",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -16,29 +66,109 @@
         "documentation": {}
     },
     {
-        "label": "requests",
-        "kind": 6,
+        "label": "ask_mistral",
+        "importPath": "services.llm",
+        "description": "services.llm",
         "isExtraImport": true,
-        "importPath": "requests",
-        "description": "requests",
-        "detail": "requests",
+        "detail": "services.llm",
         "documentation": {}
     },
     {
-        "label": "Prompt",
-        "kind": 6,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "class Prompt(BaseModel):\n    prompt: str\n@app.post(\"/ask\")\ndef ask_mistral(data: Prompt):\n    response = requests.post(\n        \"http://localhost:11434/api/generate\",\n        json={\"model\": \"mistral\", \"prompt\": data.prompt}\n    )\n    return {\"response\": response.json()[\"response\"]}",
-        "detail": "main",
+        "label": "ORACLE_USER",
+        "kind": 5,
+        "importPath": "connections.database",
+        "description": "connections.database",
+        "peekOfCode": "ORACLE_USER = os.getenv(\"ORACLE_USER\")\nORACLE_PASS = os.getenv(\"ORACLE_PASS\")\nORACLE_DSN = os.getenv(\"ORACLE_DSN\")  # contoh: \"localhost:1521/XEPDB1\"\nDATABASE_URL = f\"oracle+oracledb://{ORACLE_USER}:{ORACLE_PASS}@{ORACLE_DSN}\"\nengine = create_engine(DATABASE_URL, echo=True)\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nBase = declarative_base()",
+        "detail": "connections.database",
+        "documentation": {}
+    },
+    {
+        "label": "ORACLE_PASS",
+        "kind": 5,
+        "importPath": "connections.database",
+        "description": "connections.database",
+        "peekOfCode": "ORACLE_PASS = os.getenv(\"ORACLE_PASS\")\nORACLE_DSN = os.getenv(\"ORACLE_DSN\")  # contoh: \"localhost:1521/XEPDB1\"\nDATABASE_URL = f\"oracle+oracledb://{ORACLE_USER}:{ORACLE_PASS}@{ORACLE_DSN}\"\nengine = create_engine(DATABASE_URL, echo=True)\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nBase = declarative_base()",
+        "detail": "connections.database",
+        "documentation": {}
+    },
+    {
+        "label": "ORACLE_DSN",
+        "kind": 5,
+        "importPath": "connections.database",
+        "description": "connections.database",
+        "peekOfCode": "ORACLE_DSN = os.getenv(\"ORACLE_DSN\")  # contoh: \"localhost:1521/XEPDB1\"\nDATABASE_URL = f\"oracle+oracledb://{ORACLE_USER}:{ORACLE_PASS}@{ORACLE_DSN}\"\nengine = create_engine(DATABASE_URL, echo=True)\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nBase = declarative_base()",
+        "detail": "connections.database",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASE_URL",
+        "kind": 5,
+        "importPath": "connections.database",
+        "description": "connections.database",
+        "peekOfCode": "DATABASE_URL = f\"oracle+oracledb://{ORACLE_USER}:{ORACLE_PASS}@{ORACLE_DSN}\"\nengine = create_engine(DATABASE_URL, echo=True)\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nBase = declarative_base()",
+        "detail": "connections.database",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "kind": 5,
+        "importPath": "connections.database",
+        "description": "connections.database",
+        "peekOfCode": "engine = create_engine(DATABASE_URL, echo=True)\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nBase = declarative_base()",
+        "detail": "connections.database",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "kind": 5,
+        "importPath": "connections.database",
+        "description": "connections.database",
+        "peekOfCode": "SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nBase = declarative_base()",
+        "detail": "connections.database",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 5,
+        "importPath": "connections.database",
+        "description": "connections.database",
+        "peekOfCode": "Base = declarative_base()",
+        "detail": "connections.database",
         "documentation": {}
     },
     {
         "label": "ask_mistral",
         "kind": 2,
+        "importPath": "services.llm",
+        "description": "services.llm",
+        "peekOfCode": "def ask_mistral(prompt: str) -> str:\n    response = requests.post(\n        \"http://localhost:11434/api/generate\",\n        json={\"model\": \"mistral\", \"prompt\": prompt, \"stream\": False}\n    )\n    if response.status_code == 200:\n        data = response.json()\n        return data.get(\"response\", \"\")\n    else:\n        return \"Error from LLM: \" + str(response.text)",
+        "detail": "services.llm",
+        "documentation": {}
+    },
+    {
+        "label": "PromptRequest",
+        "kind": 6,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def ask_mistral(data: Prompt):\n    response = requests.post(\n        \"http://localhost:11434/api/generate\",\n        json={\"model\": \"mistral\", \"prompt\": data.prompt}\n    )\n    return {\"response\": response.json()[\"response\"]}",
+        "peekOfCode": "class PromptRequest(BaseModel):\n    prompt: str\nclass PromptResponse(BaseModel):\n    prompt: str\n    response: str\n@app.post(\"/ask\", response_model=PromptResponse)\ndef ask_question(req: PromptRequest):\n    result = ask_mistral(req.prompt)\n    return {\"prompt\": req.prompt, \"response\": result}",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "PromptResponse",
+        "kind": 6,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "class PromptResponse(BaseModel):\n    prompt: str\n    response: str\n@app.post(\"/ask\", response_model=PromptResponse)\ndef ask_question(req: PromptRequest):\n    result = ask_mistral(req.prompt)\n    return {\"prompt\": req.prompt, \"response\": result}",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "ask_question",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def ask_question(req: PromptRequest):\n    result = ask_mistral(req.prompt)\n    return {\"prompt\": req.prompt, \"response\": result}",
         "detail": "main",
         "documentation": {}
     },
@@ -47,7 +177,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "app = FastAPI()\nclass Prompt(BaseModel):\n    prompt: str\n@app.post(\"/ask\")\ndef ask_mistral(data: Prompt):\n    response = requests.post(\n        \"http://localhost:11434/api/generate\",\n        json={\"model\": \"mistral\", \"prompt\": data.prompt}\n    )\n    return {\"response\": response.json()[\"response\"]}",
+        "peekOfCode": "app = FastAPI()\nclass PromptRequest(BaseModel):\n    prompt: str\nclass PromptResponse(BaseModel):\n    prompt: str\n    response: str\n@app.post(\"/ask\", response_model=PromptResponse)\ndef ask_question(req: PromptRequest):\n    result = ask_mistral(req.prompt)\n    return {\"prompt\": req.prompt, \"response\": result}",
         "detail": "main",
         "documentation": {}
     }
